@@ -51,5 +51,8 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ vars.DEVAPPNAME }}
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+          resourceGroupName: ${{ vars.NODEJS_RG }}
+          template: ./devops/dev/main.dev.bicep
+          parameters: ./devops/dev/main.dev.bicepparam
           package: .
